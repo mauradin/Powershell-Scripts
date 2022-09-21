@@ -1,8 +1,9 @@
 <#Requires Administrator Rights
 
-#Synopsis
+# Synopsis
 This script adjusts existing FSLogix disk sizes. It may also resize User Profile Disks (VHDXs) because the FSLogix app has native hyper-v support.
 
+# Logic
 To start, we need to set our variables:
 1.) Target the app location for frx.exe (No trailing slashes)
 2.) Target the path for the RDS Profiles (No trailing slashes)
@@ -11,8 +12,12 @@ To start, we need to set our variables:
 The script will then proceed to rename all VHDs in the subdirectories of your folder. (If you use VHDXs, change the script to VHDX)
 Next, it will migrate the existing drive, to the new drive with the adjusted storage size.
 
+You may notice a change in size. I'm assuming this is because certain folders do not have rights to copy.
+
+# Verify
 You can verify the new storage quota by logging in to the account and opening the frxtray.exe app, and seeing the listed disk size.
 
+# Caution
 Please be aware, this script was made by someone of a very novice level.
 Test before pushing to production.
 Use with caution.
