@@ -1,7 +1,7 @@
 <#Requires Administrator Rights
 
 # Synopsis
-This script adjusts existing FSLogix disk sizes.
+This script adjusts existing FSLogix disk sizes. NTFS Permissions MUST be re-added after the migration.
 
 # Logic
 To start, we need to set our variables:
