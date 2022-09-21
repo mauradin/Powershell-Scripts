@@ -1,7 +1,7 @@
 <#Requires Administrator Rights
 
 #Synopsis
-This script adjusts existing FSLogix disk sizes.
+This script adjusts existing FSLogix disk sizes. It may also resize User Profile Disks (VHDXs) because the FSLogix app has native hyper-v support.
 
 To start, we need to set our variables:
 1.) Target the app location for frx.exe (No trailing slashes)
