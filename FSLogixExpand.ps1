@@ -22,6 +22,9 @@ Please be aware, this script was made by someone of a very novice level.
 Test before pushing to production.
 Use with caution.
 
+# Note
+# You will need to recreate the NTFS permissions. The script can be modified to copy the old VHD permissions to the new VHD.
+
 - Jesse Campanella
 #>
 
