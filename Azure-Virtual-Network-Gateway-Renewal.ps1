@@ -83,7 +83,7 @@ Read-Host "Press Enter to update the certificate, close out to force end the scr
 $CertificateText = for ($i=1; $i -lt $base64certificate.Length -1 ; $i++){$base64certificate[$i]}
 Add-AzVpnClientRootCertificate -PublicCertData $CertificateText -ResourceGroupName "$rg" -VirtualNetworkGatewayName "$vn" -VpnClientRootCertificateName "P2sRootCert-$nickname"
 
-Write-Host "Please verify that the VPN Root Cert is reflecting in Azure"
+Write-Host "Please verify that the VPN Root Cert is reflecting in Azure" -ForegroundColor Cyan
 Get-AzVpnClientRootCertificate -VirtualNetworkGatewayName "$vn" -resourcegroupname "$rg" |format-table -Property Name,ProvisioningState,PublicCertData,ID
 Start-Sleep 2
 
