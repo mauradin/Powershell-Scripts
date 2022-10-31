@@ -4,7 +4,7 @@ This script was designed to help a company create user accounts in a hybrid envi
 New-Remotemailbox enables a mailbox object onto the AD account. For normal mail flow, this isn't necessary. But to receive
 Scan-To-Email emails, it is necessary to have this enabled. Otherwise the SMTP traffic will not reach the user.
 
-Currently it uses a static UPN, so it is not transferable to other companies.
+Currently it uses a static UPN, so it is not transferable to other companies without reconfiguring the available UPNs.
 
 #>
 #Startup
@@ -18,18 +18,18 @@ $last = Read-Host 'Last Name:'
 $un = Read-Host 'Username:'
 $pw = Read-Host -AsSecureString 'Password (Must meet complexity requirements):'
 $Name = $first + ' ' + $last
-$choice = Read-Host -Prompt "Primary SMTP Address: Select 1 for @3ls.com, Select 2 for @omnivisions.com, Select 3 for omnicommunityhealth.com"
+$choice = Read-Host -Prompt "Primary SMTP Address: Select 1 for @upn1.com, Select 2 for @upn2.com, Select 3 for upn3.com"
 
 #Set the primary domain
 $domain
     if ($choice -eq 1) {
-          $domain = "3ls"
+          $domain = "upn1"
          }
        Elseif ($choice -eq 2) {
-          $domain = "omnivisions"
+          $domain = "upn2"
          }
       Elseif ($choice -eq 3) {
-          $domain = "omnicommunityhealth"
+          $domain = "upn3"
          }
       Else {
            write-host "This is not an option - exiting program."
