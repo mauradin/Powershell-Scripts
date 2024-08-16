@@ -1,0 +1,6 @@
+SigninLogs
+| extend DeviceDetailParsed = parse_json(DeviceDetail)
+| where (DeviceDetailParsed.operatingSystem contains "iOS" or DeviceDetailParsed.operatingSystem contains "Android")
+| where (DeviceDetailParsed.browser contains "Mobile")
+| where AppDisplayName contains "Online"
+| project TimeGenerated, UserPrincipalName, DeviceDetailParsed.operatingSystem, DeviceDetailParsed.browser, UserAgent, IPAddress, AppDisplayName
