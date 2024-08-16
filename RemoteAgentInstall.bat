@@ -1,6 +1,11 @@
 @echo off
 setlocal
 
+:: This script will install Automate on the computer. 
+:: It will pull the Automate Installer .MSI and then transform the configuration with the AutomateMST.MST file from a cloud-hosted url (Azure Blobs, etc.). 
+:: It must be ran as an Administrator.
+:: Written by: Jesse Campanella
+
 :: Define URLs and local paths
 set "msiUrl=http://testurl.com/AutomateAgent.MSI"
 set "mstUrl=http://testurl.com/AutomateMST.MST"
