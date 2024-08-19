@@ -10,7 +10,7 @@ setlocal
 set "msiUrl=http://testurl.com/AutomateAgent.MSI"
 set "mstUrl=http://testurl.com/AutomateMST.MST"
 set "msiLocalPath=C:\temp\AutomateAgent.MSI"
-set "mstLocalPath=C:\temp\AutomateMST.MSI"
+set "mstLocalPath=C:\temp\AutomateMST.MST"
 
 :: Create the temp directory if it doesn't exist
 if not exist "C:\temp" mkdir C:\temp
