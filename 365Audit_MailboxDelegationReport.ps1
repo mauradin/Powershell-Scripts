@@ -1,0 +1,2 @@
+# Script will allow you to run a report on delegated access. It does require that Auditing be enabled on the tenant
+Search-MailboxAuditLog -Identity $Name -LogonTypes Delegate,Owner,Admin -ShowDetails -StartDate MM/DD/YY -EndDate MM/DD/YY | Select-Object Operation, LogonType, LastAccessed, LogonUserDisplayName 

@@ -1,0 +1,85 @@
+COMMAND ONLY
+
+@echo off
+setlocal
+
+:: Define URLs and local paths
+set "msiUrl=http://testurl.com/AutomateAgent.MSI"
+set "batUrl=http://testurl.com/AutomateConfig.bat"
+set "msiLocalPath=C:\temp\AutomateAgent.MSI"
+set "batLocalPath=C:\temp\AutomateConfig.bat"
+
+:: Create the temp directory if it doesn't exist
+if not exist "C:\temp" mkdir C:\temp
+
+:: Download the .msi file
+powershell -Command "Invoke-WebRequest -Uri '%msiUrl%' -OutFile '%msiLocalPath%'"
+
+:: Download the .bat file
+powershell -Command "Invoke-WebRequest -Uri '%batUrl%' -OutFile '%batLocalPath%'"
+
+:: Run the .bat file
+start /wait "" "%batLocalPath%"
+
+:: Install the .msi file
+msiexec /i "%msiLocalPath%" /quiet /norestart
+
+endlocal
+
+
+Remote PS
+
+Invoke-Command -ComputerName remote-computer-name -ScriptBlock {
+    # Define URLs and local paths
+    $msiUrl = "http://testurl.com/AutomateAgent.MSI"
+    $batUrl = "http://testurl.com/AutomateConfig.bat"
+    $msiLocalPath = "C:\temp\AutomateAgent.MSI"
+    $batLocalPath = "C:\temp\AutomateConfig.bat"
+
+    # Create the temp directory if it doesn't exist
+    $folderPath = [System.IO.Path]::GetDirectoryName($msiLocalPath)
+    if (-not (Test-Path $folderPath)) {
+        New-Item -ItemType Directory -Path $folderPath
+    }
+
+    # Download the .msi file
+    Invoke-WebRequest -Uri $msiUrl -OutFile $msiLocalPath
+
+    # Download the .bat file
+    Invoke-WebRequest -Uri $batUrl -OutFile $batLocalPath
+
+    # Run the .bat file
+    Start-Process -FilePath $batLocalPath -Wait
+
+    # Install the .msi file
+    Start-Process msiexec.exe -ArgumentList "/i `"$msiLocalPath`" /quiet /norestart" -Wait
+} -Credential (Get-Credential)
+
+
+Regular PS
+
+
+# Define URLs and local paths
+$msiUrl = "http://testurl.com/AutomateAgent.MSI"
+$batUrl = "http://testurl.com/AutomateConfig.bat"
+$msiLocalPath = "C:\temp\AutomateAgent.MSI"
+$batLocalPath = "C:\temp\AutomateConfig.bat"
+
+# Create the temp directory if it doesn't exist
+$folderPath = [System.IO.Path]::GetDirectoryName($msiLocalPath)
+if (-not (Test-Path $folderPath)) {
+    New-Item -ItemType Directory -Path $folderPath
+}
+
+# Download the .msi file
+Invoke-WebRequest -Uri $msiUrl -OutFile $msiLocalPath
+
+# Download the .bat file
+Invoke-WebRequest -Uri $batUrl -OutFile $batLocalPath
+
+# Run the .bat file
+Start-Process -FilePath $batLocalPath -Wait
+
+# Install the .msi file
+Start-Process msiexec.exe -ArgumentList "/i `"$msiLocalPath`" /quiet /norestart" -Wait
+
