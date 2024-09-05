@@ -1,4 +1,4 @@
-# Ensuring  TLS 1.2 is used for the connection
+# Installing Immy via TLS 1.2
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
 # Define URLs and file paths

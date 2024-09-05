@@ -1,5 +1,0 @@
-$ErrorActionPreference = "Stop";$url = '
-https://acumen.immy.bot/plugins/api/v1/1/installer/latest-download';$InstallerFile
-= [io.path]::ChangeExtension([io.path]::GetTempFileName(), ".msi");(New-Object System.Net.WebClient).DownloadFile($url, $InstallerFile);$InstallerLogFile = [io.path]::ChangeExtension([io.path]::GetTempFileName(), ".log");$Arguments = " /c msiexec /i `"$InstallerFile`" /qn /norestart /l*v `"$InstallerLogFile`" REBOOT=REALLYSUPPRESS ID=6e9ed2fa-8779-40a3-8870-6c5b172c1680 ADDR=
-https://acumen.immy.bot/plugins/api/v1/1
-KEY=+E3UasiqZDSx7kPm4YYxjffV6ojCAfN0D0qxvMQquHk=";Write-Host "InstallerLogFile: $InstallerLogFile";$Process = Start-Process -Wait cmd -ArgumentList $Arguments -Passthru;if ($Process.ExitCode -ne 0) {    Get-Content $InstallerLogFile -ErrorAction SilentlyContinue | Select-Object -Last 200;    throw "Exit Code: $($Process.ExitCode), ComputerName: $($env:ComputerName)"}else {    Write-Host "Exit Code: $($Process.ExitCode)";    Write-Host "ComputerName: $($env:ComputerName)";}
