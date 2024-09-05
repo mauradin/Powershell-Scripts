@@ -1,4 +1,4 @@
-$repositoryUrl = "https://atworktest.blob.core.windows.net/aworkcsdeployment/Crowdstrike.exe"
+$repositoryUrl = "testurl.com/install.exe"
 $destinationPath = "C:\crowdstrikeinstall\Crowdstrike.exe"
 $cid = "CIDGOESHERE@@@@"
 
