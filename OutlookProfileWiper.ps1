@@ -11,7 +11,7 @@ Get-ChildItem -Path "C:\Users" -Directory | ForEach-Object {
 
     $oneAuthFolder = Join-Path -Path $userDir -ChildPath "AppData\Local\Microsoft\OneAuth"
     if (Test-Path -Path $oneAuthFolder) {
-        Rename-Item -Path $oneAuthFolder -NewName "OneAuth.oldoldmigration" -Force
+        Rename-Item -Path $oneAuthFolder -NewName "OneAuth.oldmigration" -Force
         Write-Host "Renamed folder for user $userDir"
     }
 }
