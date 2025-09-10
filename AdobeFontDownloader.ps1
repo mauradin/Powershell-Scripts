@@ -1,6 +1,6 @@
 $FontsDir = "C:\Program Files\Adobe\Acrobat DC\Resource\Font"
 $ZipFilePath = "C:\Program Files\Adobe\Acrobat DC\Resource\Font\ETCOMFonts.zip"
-$DownloadUrl = "https://acumentechnology-my.sharepoint.com/:u:/p/jcampanella/EUBWjry6wcREsFIqJoX8Op4Bwe_DNXVDNjYYyxFwmTZz7g?download=1 "
+$DownloadUrl = "OneDriveURL?download=1 "
 
 if (-not (Test-Path $FontsDir)) {
     New-Item -Path $FontsDir -ItemType Directory
